@@ -24,7 +24,7 @@ function random(inputSeed) {
       /**
        * Generates random integer number in the range from 0 (inclusive) to maxValue (exclusive)
        *
-       * @param maxValue is REQUIRED. Ommitit this numbe will result in NaN values from PRNG.
+       * @param maxValue Number REQUIRED. Ommitting this number will result in NaN values from PRNG.
        */
       next : function (maxValue) {
           return Math.floor(randomFunc() * maxValue);
