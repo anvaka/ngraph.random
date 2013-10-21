@@ -3,6 +3,7 @@ ngraph.random
 
 Operation with seeded random numbers for ngraph.*.
 
+[![build status](https://secure.travis-ci.org/anvaka/ngraph.random.png)](http://travis-ci.org/anvaka/ngraph.random)
 Usage
 =====
 API provides random number generation, and array shuffling. 
