@@ -15,3 +15,10 @@ test('random iterator returns all items', function (t) {
     t.ok(iterated.length === a.length, 'Number of iterated items does not match number of original array items');
     t.end();
 });
+test('Same seed gives same values', function (t) {
+  var random1 = randomAPI.random(42);
+  var random2 = randomAPI.random(42);
+
+  t.equal(random1.next(100), random2.next(100), "Same seed should give same values");
+  t.end();
+});
