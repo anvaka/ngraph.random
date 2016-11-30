@@ -9,40 +9,41 @@ module.exports = {
  */
 function random(inputSeed) {
   var seed = typeof inputSeed === 'number' ? inputSeed : (+new Date());
+  return new Generator(seed)
+}
 
-  return {
-    /**
-     * Generates random integer number in the range from 0 (inclusive) to maxValue (exclusive)
-     *
-     * @param maxValue Number REQUIRED. Omitting this number will result in NaN values from PRNG.
-     */
-    next: next,
+function Generator(seed) {
+  this.seed = seed;
+}
 
-    /**
-     * Generates random double number in the range from 0 (inclusive) to 1 (exclusive)
-     * This function is the same as Math.random() (except that it could be seeded)
-     */
-    nextDouble: nextDouble
-  };
+/**
+  * Generates random integer number in the range from 0 (inclusive) to maxValue (exclusive)
+  *
+  * @param maxValue Number REQUIRED. Omitting this number will result in NaN values from PRNG.
+  */
+Generator.prototype.next = next;
 
-  function nextDouble() {
-    return randomFunc();
-  }
+/**
+  * Generates random double number in the range from 0 (inclusive) to 1 (exclusive)
+  * This function is the same as Math.random() (except that it could be seeded)
+  */
+Generator.prototype.nextDouble = nextDouble;
 
-  function next(maxValue) {
-    return Math.floor(randomFunc() * maxValue);
-  }
+function nextDouble() {
+  var seed = this.seed;
+  // Robert Jenkins' 32 bit integer hash function.
+  seed = ((seed + 0x7ed55d16) + (seed << 12)) & 0xffffffff;
+  seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
+  seed = ((seed + 0x165667b1) + (seed << 5)) & 0xffffffff;
+  seed = ((seed + 0xd3a2646c) ^ (seed << 9)) & 0xffffffff;
+  seed = ((seed + 0xfd7046c5) + (seed << 3)) & 0xffffffff;
+  seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
+  this.seed = seed;
+  return (seed & 0xfffffff) / 0x10000000;
+}
 
-  function randomFunc() {
-    // Robert Jenkins' 32 bit integer hash function.
-    seed = ((seed + 0x7ed55d16) + (seed << 12)) & 0xffffffff;
-    seed = ((seed ^ 0xc761c23c) ^ (seed >>> 19)) & 0xffffffff;
-    seed = ((seed + 0x165667b1) + (seed << 5)) & 0xffffffff;
-    seed = ((seed + 0xd3a2646c) ^ (seed << 9)) & 0xffffffff;
-    seed = ((seed + 0xfd7046c5) + (seed << 3)) & 0xffffffff;
-    seed = ((seed ^ 0xb55a4f09) ^ (seed >>> 16)) & 0xffffffff;
-    return (seed & 0xfffffff) / 0x10000000;
-  }
+function next(maxValue) {
+  return Math.floor(this.nextDouble() * maxValue);
 }
 
 /*
