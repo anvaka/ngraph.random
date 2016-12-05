@@ -20,6 +20,8 @@
     "url": "https://github.com/anvaka/ngraph.random/issues"
   },
   "devDependencies": {
-    "tap": "~0.4.4"
+    "benchmark": "^2.1.2",
+    "seedrandom": "^2.4.2",
+    "tap": "^8.0.1"
   }
 }
