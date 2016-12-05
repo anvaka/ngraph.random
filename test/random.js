@@ -9,12 +9,13 @@ test('random iterator returns all items', function (t) {
 
     shuffle.forEach(function (i) {
         iterated.push(i);
-        t.ok(a.indexOf(i) !== -1, 'Shuffle iterator should return only items from original array. Unexpected ' + i);
+        t.ok(a.indexOf(i) !== -1, 'Shuffle iterator should return only items from original array. Passed ' + i);
     });
 
     t.ok(iterated.length === a.length, 'Number of iterated items does not match number of original array items');
     t.end();
 });
+
 test('Same seed gives same values', function (t) {
   var random1 = randomAPI.random(42);
   var random2 = randomAPI.random(42);
