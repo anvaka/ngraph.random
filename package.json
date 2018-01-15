@@ -1,6 +1,6 @@
 {
   "name": "ngraph.random",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Operation with random numbers for ngraph.*",
   "main": "index.js",
   "scripts": {
