@@ -23,3 +23,17 @@ test('Same seed gives same values', function (t) {
   t.equal(random1.next(100), random2.next(100), "Same seed should give same values");
   t.end();
 });
+
+test('it can generate gaussian', function (t) {
+    var random = randomAPI.random(42);
+    t.ok(typeof random.gaussian() === 'number', 'number generated');
+    t.end();
+});
+
+test('can use function syntax', function (t) {
+  var random1 = randomAPI(42);
+  var random2 = randomAPI.random(42);
+
+  t.equal(random1.nextDouble(), random2.nextDouble(), "Same seed should give same values");
+  t.end();
+});

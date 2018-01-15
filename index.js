@@ -1,7 +1,8 @@
-module.exports = {
-  random: random,
-  randomIterator: randomIterator
-};
+module.exports = random;
+
+// TODO: Deprecate?
+module.exports.random = random,
+module.exports.randomIterator = randomIterator
 
 /**
  * Creates seeded PRNG with two methods:
@@ -28,6 +29,26 @@ Generator.prototype.next = next;
   * This function is the same as Math.random() (except that it could be seeded)
   */
 Generator.prototype.nextDouble = nextDouble;
+
+/**
+ * Returns a random real number uniformly in [0, 1)
+ */
+Generator.prototype.uniform = nextDouble;
+
+Generator.prototype.gaussian = gaussian;
+
+function gaussian() {
+  // use the polar form of the Box-Muller transform
+  // based on https://introcs.cs.princeton.edu/java/23recursion/StdRandom.java
+  var r, x, y;
+  do {
+    x = this.nextDouble() * 2 - 1;
+    y = this.nextDouble() * 2 - 1;
+    r = x * x + y * y;
+  } while (r >= 1 || r === 0);
+
+  return x * Math.sqrt(-2 * Math.log(r)/r);
+}
 
 function nextDouble() {
   var seed = this.seed;
