@@ -22,6 +22,6 @@
   "devDependencies": {
     "benchmark": "^2.1.2",
     "seedrandom": "^2.4.2",
-    "tap": "^8.0.1"
+    "tap": "^14.1.11"
   }
 }
