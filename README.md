@@ -10,7 +10,7 @@ Install
 
 You can use CDN:
 
-```
+``` html
 <script src='https://cdn.jsdelivr.net/npm/ngraph.random/dist/ngraph.random.js'></script>
 ```
 
@@ -22,7 +22,7 @@ npm install ngraph.random
 
 and then:
 
-```
+``` js
 var ngraphRandom = require('ngraph.random);
 ```
 
