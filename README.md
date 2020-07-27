@@ -5,6 +5,27 @@ Operation with seeded random numbers for ngraph.*.
 
 [![build status](https://secure.travis-ci.org/anvaka/ngraph.random.png)](http://travis-ci.org/anvaka/ngraph.random)
 
+Install
+=======
+
+You can use CDN:
+
+```
+<script src='https://cdn.jsdelivr.net/npm/ngraph.random/dist/ngraph.random.js'></script>
+```
+
+or via [npm](http://npmjs.org):
+
+```
+npm install ngraph.random
+```
+
+and then:
+
+```
+var ngraphRandom = require('ngraph.random);
+```
+
 Usage
 =====
 API provides random number generation, and array shuffling. 
@@ -13,7 +34,7 @@ Let's start with random number generation:
 
 ``` js
 // create generator, seeded with 42
-var randomGenerator = require('ngraph.random')(42);
+var randomGenerator = ngraphRandom(42);
 
  // prints double number from [0..1)
 console.log(randomGenerator.nextDouble());
@@ -28,11 +49,11 @@ console.log(randomGenerator.next(100)); // prints 20, we are seeded
 Second part of the API is array shuffling:
 
 ``` js
-var randomAPI = require('ngraph.random');
+var ngraphRandom = require('ngraph.random');
 
 // create "shuffling" iterator:
 var originalArray = [0, 1, 2, 3, 4, 5];
-var randomIterator = randomAPI.randomIterator(originalArray);
+var randomIterator = ngraphRandom.randomIterator(originalArray);
 
 // iterate over array in random order:
 randomIterator.forEach(function(x) {
@@ -46,8 +67,8 @@ randomIterator.shuffle();
 
 // Finally if you want to have seeded shuffling you can pass optional seeded 
 // random number generator:
-var seededGenerator = randomAPI.random(42);
-randomAPI.randomIterator(originalArray, seededGenerator); 
+var seededGenerator = ngraphRandom.random(42);
+ngraphRandom.randomIterator(originalArray, seededGenerator); 
 ```
 
 
@@ -56,20 +77,11 @@ randomAPI.randomIterator(originalArray, seededGenerator);
 The library supports random number generation that follow Gaussian distribution:
 
 ``` js
-var generator = require('ngraph.random')(42);
+var generator = ngraphRandom(42);
 
 // returns a random number from a gaussian distribution with mean 0 and
 // standard deviation 1
 generator.gaussian();
-```
-
-Install
-=======
-
-With [npm](http://npmjs.org) do:
-
-```
-npm install ngraph.graph
 ```
 
 License

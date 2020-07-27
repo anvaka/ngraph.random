@@ -4,7 +4,8 @@
   "description": "Operation with random numbers for ngraph.*",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap test/*.js",
+    "build": "browserify index.js -s ngraphRandom -o dist/ngraph.random.js && uglifyjs dist/ngraph.random.js -o dist/ngraph.random.min.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "benchmark": "^2.1.2",
     "seedrandom": "^2.4.2",
-    "tap": "^14.1.11"
+    "uglify-js": "^3.10.0",
+    "tap": "^14.10.8"
   }
 }
