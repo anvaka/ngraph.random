@@ -31,10 +31,14 @@ Generator.prototype.next = next;
 Generator.prototype.nextDouble = nextDouble;
 
 /**
- * Returns a random real number uniformly in [0, 1)
+ * Returns a random real number from uniform distribution in [0, 1)
  */
 Generator.prototype.uniform = nextDouble;
 
+/**
+ * Returns a random real number from a Gaussian distribution
+ * with 0 as a mean, and 1 as standard deviation u ~ N(0,1)
+ */
 Generator.prototype.gaussian = gaussian;
 
 function gaussian() {
@@ -48,6 +52,26 @@ function gaussian() {
   } while (r >= 1 || r === 0);
 
   return x * Math.sqrt(-2 * Math.log(r)/r);
+}
+
+/**
+ * See https://twitter.com/anvaka/status/1296182534150135808
+ */
+Generator.prototype.levy = levy;
+
+function levy() {
+  var beta = 3 / 2;
+  var sigma = Math.pow(
+      gamma( 1 + beta ) * Math.sin(Math.PI * beta / 2) / 
+        (gamma((1 + beta) / 2) * beta * Math.pow(2, (beta - 1) / 2)),
+      1/beta
+  );
+  return this.gaussian() * sigma / Math.pow(Math.abs(this.gaussian()), 1/beta);
+}
+
+// gamma function approximation
+function gamma(z) {
+  return Math.sqrt(2 * Math.PI / z) * Math.pow((1 / Math.E) * (z + 1 / (12 * z - 1 / (10 * z))), z);
 }
 
 function nextDouble() {
