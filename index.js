@@ -1,6 +1,5 @@
 module.exports = random;
 
-// TODO: Deprecate?
 module.exports.random = random,
 module.exports.randomIterator = randomIterator
 
@@ -102,6 +101,10 @@ function randomIterator(array, customRandom) {
   }
 
   return {
+    /**
+     * Visits every single element of a collection once, in a random order.
+     * Note: collection is modified in place.
+     */
     forEach: forEach,
 
     /**
