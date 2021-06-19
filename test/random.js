@@ -30,6 +30,12 @@ test('it can generate gaussian', function (t) {
     t.end();
 });
 
+test('it can generate levy', function (t) {
+    var random = randomAPI.random(42);
+    t.ok(typeof random.levy() === 'number', 'number generated');
+    t.end();
+});
+
 test('can use function syntax', function (t) {
   var random1 = randomAPI(42);
   var random2 = randomAPI.random(42);

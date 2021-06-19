@@ -14,7 +14,9 @@ You can use CDN:
 <script src='https://cdn.jsdelivr.net/npm/ngraph.random/dist/ngraph.random.js'></script>
 ```
 
-or via [npm](http://npmjs.org):
+The library will be accessible via `ngraphRandom` global name.
+
+You can also install it via [npm](http://npmjs.org):
 
 ```
 npm install ngraph.random
@@ -83,6 +85,15 @@ var generator = ngraphRandom(42);
 // standard deviation 1
 generator.gaussian();
 ```
+
+It also supports random number generation that follow [Lévy distribution](https://en.wikipedia.org/wiki/L%C3%A9vy_distribution):
+
+``` js
+var generator = ngraphRandom(42);
+generator.levy();
+```
+
+See example here: https://twitter.com/anvaka/status/1296182534150135808
 
 License
 =======
