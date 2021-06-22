@@ -16,6 +16,35 @@ test('random iterator returns all items', function (t) {
     t.end();
 });
 
+test('can shuffle in place', function (t) {
+    var a = [1, 2, 3, 4, 5, 6],
+        iterator = randomAPI.randomIterator(a);
+
+    var previous = new Set(a);
+    iterator.shuffle();
+    a.forEach(x => {
+        t.ok(previous.has(x));
+    });
+
+    t.ok(a.length === previous.size, 'Number of iterated items does not match number of original array items');
+    t.end();
+});
+
+test('throws when random API is wrong', function (t) {
+    t.throws(() => {
+        randomAPI.randomIterator([], {});
+    }, /next\(\) function is missing/)
+
+    t.end();
+});
+
+test('throws when random API is wrong', function (t) {
+    randomAPI.randomIterator([]).forEach(x => {
+        t.fail('Should not be called on empty array')
+    })
+
+    t.end();
+});
 test('Same seed gives same values', function (t) {
   var random1 = randomAPI.random(42);
   var random2 = randomAPI.random(42);
