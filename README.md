@@ -3,7 +3,7 @@ ngraph.random
 
 Operation with seeded random numbers for ngraph.*.
 
-[![build status](https://secure.travis-ci.org/anvaka/ngraph.random.png)](http://travis-ci.org/anvaka/ngraph.random)
+[![build status](https://github.com/anvaka/ngraph.random/actions/workflows/tests.yaml/badge.svg)](https://github.com/anvaka/ngraph.random/actions/workflows/tests.yaml)
 
 Install
 =======
