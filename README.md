@@ -25,7 +25,7 @@ npm install ngraph.random
 and then:
 
 ``` js
-var ngraphRandom = require('ngraph.random);
+var ngraphRandom = require('ngraph.random');
 ```
 
 Usage
