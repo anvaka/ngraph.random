@@ -40,6 +40,15 @@ Generator.prototype.uniform = nextDouble;
  */
 Generator.prototype.gaussian = gaussian;
 
+/**
+ * Returns a floating-point, pseudo-random number that's greater than 
+ * or equal to 0 and less than 1, with approximately uniform distribution over that range
+ * 
+ * Note: This method is the same as nextDouble(), but is here for
+ * compatibility with similar Math.random()
+ */
+Generator.prototype.random = nextDouble;
+
 function gaussian() {
   // use the polar form of the Box-Muller transform
   // based on https://introcs.cs.princeton.edu/java/23recursion/StdRandom.java

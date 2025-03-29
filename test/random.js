@@ -72,3 +72,10 @@ test('can use function syntax', function (t) {
   t.equal(random1.nextDouble(), random2.nextDouble(), "Same seed should give same values");
   t.end();
 });
+
+test('can use random syntax', function (t) {
+  var math = randomAPI(42);
+
+  t.ok(typeof math.random() === 'number', "Same seed should give same values");
+  t.end();
+});
